@@ -104,12 +104,12 @@
 
         // Get a whole value for the deltas
         fn = delta > 0 ? 'floor' : 'ceil';
-        delta  = Math[fn](delta / lowestDelta);
-        deltaX = Math[fn](deltaX / lowestDeltaXY);
-        deltaY = Math[fn](deltaY / lowestDeltaXY);
+        event.delta  = Math[fn](delta / lowestDelta);
+        event.deltaX = Math[fn](deltaX / lowestDeltaXY);
+        event.deltaY = Math[fn](deltaY / lowestDeltaXY);
 
         // Add event and delta to the front of the arguments
-        args.unshift(event, delta, deltaX, deltaY);
+        args.unshift(event);
 
         return ($.event.dispatch || $.event.handle).apply(this, args);
     }
